@@ -39,7 +39,7 @@ class MainForm(Form):
         self.ClientSize = System.Drawing.Size(286, 525)
         self.Controls.Add(self._webBrowser1)
         self.Name = "MainForm"
-        self.Text = "HBM_Workflow"
+        self.Text = "Workflow"
         self.Shown += self.MainFormShown
         self.ResumeLayout(False)
 
@@ -54,6 +54,8 @@ class MainForm(Form):
         for li in document.GetElementsByTagName('li'):
             li.Click += HtmlElementEventHandler(self.element_click)
         
+        #MessageBox.Show(document.Title)
+        self.Text = document.Title
         
     def element_click(self, sender, e):
         
@@ -77,7 +79,7 @@ class MainForm(Form):
                 MessageBox.Show("Event error on " + sender.InnerText)
                 
         else:
-            MessageBox.Show(sender.InnerText)
+            MessageBox.Show("Manual check " + sender.InnerText)
             
 
     def MainFormShown(self, sender, e):
