@@ -70,9 +70,14 @@ class MainForm(Form):
             
             if 'script' in typ:
                 if oDesktop:
-                    oDesktop.RunScript(os.path.join(appPath,action.strip()))
+                    scriptPath = os.path.join(appPath,action.strip())
+                    if os.path.exists(scriptPath):
+                        oDesktop.RunScript(scriptPath)
+                    else:
+                        MessageBox.Show("Not exist script file: " + scriptPath) 
                 else:
                     MessageBox.Show("Please run the application from AEDT")
+                    
             elif 'function' in typ:
                 exec(action.strip())
             else:
@@ -84,4 +89,4 @@ class MainForm(Form):
 
     def MainFormShown(self, sender, e):
         self._webBrowser1.Navigate(os.path.join(appPath,"HBM_workflow.htm"))
-       
+        self.TopMost = True
