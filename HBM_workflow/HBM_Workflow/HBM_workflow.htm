@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>GDSImportWizard</title>
+	<style>
+		.withScript {
+			font-weight: bold;
+			color: blue;
+			cursor: pointer;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<h3>
+		导入GDS
+	</h3>
+
+	<ul>
+		<li>
+			GDSImportWizard
+		</li>
+		<li>
+			ECAD Explorer裁剪清理
+		</li>
+	</ul>
+
+	<h3>
+		Layout清理
+	</h3>
+
+	<ul>
+		<li class="withScript" event = "script:CleanFloatingPython.py.py">
+			清理浮铜
+		</li>
+		<li class="withScript" event = "function:MessageBox.Show('Santinize')">
+			Santinize
+		</li>
+		<li>
+			Geometry Check
+		</li>
+	</ul>
+	<h3>
+		Air Box设定
+	</h3>
+	<ul>
+		<li>
+			方形切割
+		</li>
+		<li>
+			介质扩展(50um)
+		</li>
+		<li>
+			horizontal (0um)
+		</li>
+		<li>
+			vertical (&gt;10H)
+		</li>
+		<li>
+			圆形Bump/Ball
+		</li>
+	</ul>
+	<h3>
+		求解设置
+	</h3>
+	<ul>
+		<li>
+			走线手动网格（10H）
+		</li>
+		<li>
+			求解频率（信号速率或者基频）
+		</li>
+		<li>
+			Mixed Order（&lt;0.6）<br />
+		</li>
+		<li>
+			不保存场
+		</li>
+	</ul>
+	<h3>
+		HPC设定
+	</h3>
+
+	<ul>
+		<li>
+			设置多核心求解
+		</li>
+		<li>
+			使用Auto模式
+		</li>
+		<li>
+			关注单次求解内存数量<br />
+		</li>
+	</ul>
+
+</body>
+
+</html>
