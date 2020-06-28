@@ -9,17 +9,15 @@ Version 0.8
 import clr
 import os
 import sys
-
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
 
-from System.Windows.Forms import Application
-import MainForm
-
 appPath = os.path.split(os.path.realpath(__file__))[0]
 sys.path.append(appPath)
-MainForm.appPath = appPath
 
+
+from System.Windows.Forms import Application
+import MainForm
 
 global oDesktop
 try:
