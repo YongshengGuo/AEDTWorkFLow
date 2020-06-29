@@ -9,14 +9,14 @@
 <body>
 
 	<h3>
-		导入GDS
+		导入GDS test
 	</h3>
 
 	<ul>
-		<li class="withScript" event = "script:Lib\GDSImportWizard.py">
+		<li class="withScript" event = "script:Lib\GDSImportWizard.py" title="导出GDSII到3D Layout">
 			GDSImportWizard
 		</li>
-		<li>
+		<li title="使用ECAD对较大的设计文件进行裁剪">
 			ECAD Explorer裁剪清理
 		</li>
 	</ul>
@@ -26,13 +26,13 @@
 	</h3>
 
 	<ul>
-		<li class="withScript" event = "script:CleanFloatingPython.py">
+		<li class="withScript" event = "script:CleanFloatingPython.py" title="清理浮铜">
 			清理浮铜
 		</li>
-		<li class="withScript" event = "function:MessageBox.Show('Santinize')">
+		<li class="withScript" event = "function:MessageBox.Show('Santinize')" title="简化模型，分段结构自动合并">
 			Santinize
 		</li>
-		<li>
+		<li title="检查交叠问题">
 			Geometry Check
 		</li>
 	</ul>
@@ -40,19 +40,19 @@
 		Air Box设定
 	</h3>
 	<ul>
-		<li>
-			方形切割
+		<li title="如果是方形切割，建议Bounding Box，如果是类似L形等多边形切割，建议Conformal Box">
+			空气盒子大小设定
 		</li>
 		<li>
 			介质扩展(50um)
 		</li>
 		<li>
-			horizontal (0um)
+			horizontal扩展 (0um)
 		</li>
-		<li>
-			vertical (&gt;10H)
+		<li title="Air Box vertical扩展100-200um，建议至少10H">
+			vertical扩展 (&gt;10H)
 		</li>
-		<li>
+		<li title="使用圆形的Bump/Ball，并尽量避免在结构引入弧形结构，导致Phi Mesh失败">
 			圆形Bump/Ball
 		</li>
 	</ul>
@@ -66,7 +66,7 @@
 		<li>
 			求解频率（信号速率或者基频）
 		</li>
-		<li>
+		<li title="如果使用Mixed order且average order大于0.6，则需要切回1阶">
 			Mixed Order（&lt;0.6）<br />
 		</li>
 		<li>
