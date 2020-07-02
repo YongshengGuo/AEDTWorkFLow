@@ -16,7 +16,6 @@ clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
 clr.AddReferenceToFile('gdslib.dll')
 from System.Windows.Forms import Application
-from System.Drawing import Size
 import MainForm
 
 global oDesktop
@@ -35,7 +34,8 @@ MainForm.appPath = appPath
 
 Application.EnableVisualStyles()
 form = MainForm.MainForm()
-#Application.Run(form)
-form.ShowDialog()
-#form.Size = Size(541,811)
-form.Size = Size(811,541)
+try:
+    
+    Application.Run(form)
+except:
+    form.Show()

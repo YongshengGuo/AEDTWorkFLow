@@ -1,0 +1,1 @@
+ipy64 "C:\Program Files\AnsysEM\AnsysEM20.1\Win64\common\IronPython\Tools\Scripts\pyc.py"  .\MainForm.py   /out:workflowlib

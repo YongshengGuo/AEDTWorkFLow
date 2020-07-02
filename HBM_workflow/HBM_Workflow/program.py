@@ -12,8 +12,8 @@ import sys
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
 
-appPath = os.path.split(os.path.realpath(__file__))[0]
-sys.path.append(appPath)
+appDir = os.path.split(os.path.realpath(__file__))[0]
+sys.path.append(appDir)
 
 
 from System.Windows.Forms import Application
@@ -30,9 +30,14 @@ except ImportError:
 else:
     print('Running in AEDT environment')
 MainForm.oDesktop = oDesktop
-MainForm.appPath = appPath
+MainForm.appPath = appDir
 
+if __name__ == '__main__':
+    form = MainForm.MainForm()
+    if len(sys.argv) >1:
+        form.htmlPath = sys.argv[1]
+    if oDesktop:
+        form.Show()
+    else:
+        Application.Run(form)
 
-Application.EnableVisualStyles()
-form = MainForm.MainForm()
-Application.Run(form)
