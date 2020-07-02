@@ -11,7 +11,7 @@ import os,sys
 
 from System.Drawing import *
 from System.Windows.Forms import *
-global appPath
+global appDir
 global oDesktop
 
 
@@ -19,6 +19,8 @@ global oDesktop
 class MainForm(Form):
     def __init__(self):
         self.InitializeComponent()
+        self.htmlPath = "workflow.htm"
+        self.colorVisited = 'lightblue'
     
     def InitializeComponent(self):
         self._webBrowser1 = System.Windows.Forms.WebBrowser()
@@ -50,15 +52,13 @@ class MainForm(Form):
 #         clearFloatCopper.Click += HtmlElementEventHandler(self.element_click)
         document = self._webBrowser1.Document
         a = document.GetElementsByTagName('li')[0]
-        print(dir(a))
+        #print(dir(a))
         for li in document.GetElementsByTagName('li'):
             li.Click += HtmlElementEventHandler(self.element_click)
-        
         #MessageBox.Show(document.Title)
         self.Text = document.Title
         
     def element_click(self, sender, e):
-        
         if sender.DomElement.hasAttribute('event'):
             event = sender.DomElement.getAttribute('event')
             eventSplit = event.split(':')
@@ -70,7 +70,7 @@ class MainForm(Form):
             
             if 'script' in typ:
                 if oDesktop:
-                    scriptPath = os.path.join(appPath,action.strip())
+                    scriptPath = os.path.join(appDir,action.strip())
                     if os.path.exists(scriptPath):
                         oDesktop.RunScript(scriptPath)
                     else:
@@ -84,9 +84,11 @@ class MainForm(Form):
                 MessageBox.Show("Event error on " + sender.InnerText)
                 
         else:
-            MessageBox.Show("Manual check " + sender.InnerText)
+            pass
+            #MessageBox.Show("Manual check " + sender.InnerText)
+        #print(dir(sender.DomElement.Style))
+        sender.DomElement.Style.color = self.colorVisited
             
 
     def MainFormShown(self, sender, e):
-        self._webBrowser1.Navigate(os.path.join(appPath,"HBM_workflow.htm"))
-        self.TopMost = True
+        self._webBrowser1.Navigate(os.path.join(appDir,self.htmlPath))
