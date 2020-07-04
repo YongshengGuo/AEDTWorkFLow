@@ -59,13 +59,13 @@ class menuCommand(object):
                 hSubmenu = winAPI.GetSubMenu(hmenu,i)
                 self.getMenuIdList(hSubmenu)
                 
-    def menuClick(self,menuID):
+    def invokedMenuByID(self,menuID):
         winAPI.MenuClick(self.hwnd,menuID) 
         
-    def invokedMenu(self,name):
+    def invokedMenuByName(self,name):
         try:
             ind = self.menuIdList.index(name)
-            self.menuClick(self.menuIdList[ind+1])
+            self.invokedMenuByID(self.menuIdList[ind+1])
         except:
             print("not fond menu item: " + name)
             
