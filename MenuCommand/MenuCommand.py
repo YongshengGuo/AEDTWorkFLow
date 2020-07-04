@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
 Created on 2020-7-4
 
@@ -29,11 +30,20 @@ class menuCommand(object):
         
     def getMenu(self,hwnd = None):
         hwnd = hwnd or self.hwnd  
-        self.hMenu = winAPI.GetMenu(hwnd)
-        return self.hMenu
-          
+        print(hwnd)
+        if hwnd:      
+            self.hMenu = winAPI.GetMenu(hwnd)            
+            return self.hMenu
+        else:
+            print("Bad hwnd handle")
+    
+    #弹出式菜单，就返回-1, 分隔符则返回0
     def getMenuIdList(self,hmenu = None):
         hmenu = hmenu or self.hMenu or self.getMenu()
+        if not hmenu:
+            print("Bad hmenu handle")
+            return
+            
         count = winAPI.GetMenuItemCount(hmenu)
         #print(count)
         if count == -1:
@@ -57,7 +67,7 @@ class menuCommand(object):
             ind = self.menuIdList.index(name)
             self.menuClick(self.menuIdList[ind+1])
         except:
-            print("not fond menu name: " + name)
+            print("not fond menu item: " + name)
             
                 
 if __name__ == "__main__":
