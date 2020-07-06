@@ -77,5 +77,5 @@ if __name__ == "__main__":
     mc.getMenuIdList()
     print(mc.menuIdList)
     #mc.menuClick(3)
-    mc.invokedMenu('Save')
+    mc.invokedMenuByName('Save')
         

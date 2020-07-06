@@ -1,7 +1,7 @@
 #coding=utf-8
 '''
 Created on 2020-06-28
-Version 0.8
+Version 0.1
 
 @author: yongsheng.guo@ansys.com
 '''
@@ -16,7 +16,6 @@ sys.path.append(appDir)
 
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
-clr.AddReferenceToFile('workflowlib.dll')
 from System.Windows.Forms import Application,MessageBox
 import MainForm
 
@@ -31,7 +30,7 @@ except ImportError:
 else:
     print('Running in AEDT environment')
 MainForm.oDesktop = oDesktop
-MainForm.appPath = appDir
+MainForm.appDir = appDir
 
 if __name__ == '__main__':
     form = MainForm.MainForm()
@@ -42,6 +41,9 @@ if __name__ == '__main__':
     else:
         MessageBox.Show("Not found setting file: " + htmlPath)
         exit()
+        
+    
+    Application.Run(form)    
         
     if oDesktop:
         form.Show()

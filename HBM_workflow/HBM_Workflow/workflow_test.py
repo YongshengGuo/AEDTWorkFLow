@@ -31,7 +31,7 @@ except ImportError:
 else:
     print('Running in AEDT environment')
 MainForm.oDesktop = oDesktop
-MainForm.appPath = appDir
+MainForm.appDir = appDir
 
 if __name__ == '__main__':
     form = MainForm.MainForm()

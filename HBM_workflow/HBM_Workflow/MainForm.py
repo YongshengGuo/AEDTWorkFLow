@@ -47,15 +47,12 @@ class MainForm(Form):
 
 
     def WebBrowser1DocumentCompleted(self, sender, e):
-#         clearFloatCopper = self._webBrowser1.Document.GetElementById("clearFloatCopper")
-#         print(dir(clearFloatCopper))
-#         clearFloatCopper.Click += HtmlElementEventHandler(self.element_click)
+
         document = self._webBrowser1.Document
         a = document.GetElementsByTagName('li')[0]
-        #print(dir(a))
         for li in document.GetElementsByTagName('li'):
             li.Click += HtmlElementEventHandler(self.element_click)
-        #MessageBox.Show(document.Title)
+
         self.Text = document.Title
         
     def element_click(self, sender, e):
@@ -86,7 +83,6 @@ class MainForm(Form):
         else:
             pass
             #MessageBox.Show("Manual check " + sender.InnerText)
-        #print(dir(sender.DomElement.Style))
         sender.DomElement.Style.color = self.colorVisited
             
 
