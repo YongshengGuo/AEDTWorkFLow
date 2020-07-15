@@ -1,5 +1,9 @@
 eclipse.preferences.version=1
+encoding//HBM_workflow/HBM_Workflow/Lib/GDSImportWizard.py=utf-8
 encoding//HBM_workflow/HBM_Workflow/MainForm.py=utf-8
+encoding//HBM_workflow/HBM_Workflow/program.py=utf-8
 encoding//HBM_workflow/HBM_Workflow/workflow.py=utf-8
 encoding//HBM_workflow/HBM_Workflow/workflow_test.py=utf-8
+encoding//MenuCommand/AEDTCommand.py=utf-8
 encoding//MenuCommand/MenuCommand.py=utf-8
+encoding//MenuCommand/Win32Command.py=utf-8

@@ -8,7 +8,6 @@ Version 0.8
 import System.Drawing
 import System.Windows.Forms
 import os,sys
-import subprocess
 
 from System.Drawing import *
 from System.Windows.Forms import *
@@ -71,11 +70,6 @@ class MainForm(Form):
                     scriptPath = os.path.join(appDir,action.strip())
                     if os.path.exists(scriptPath):
                         oDesktop.RunScript(scriptPath)
-                        #cmd = ["ipy64.exe",scriptPath]
-                        #subprocess.Popen(cmd) 
-                        #cmd = "ipy64.exe " + scriptPath
-                        #MessageBox.Show(cmd)
-                        #os.system(cmd)
                     else:
                         MessageBox.Show("Not exist script file: " + scriptPath) 
                 else:

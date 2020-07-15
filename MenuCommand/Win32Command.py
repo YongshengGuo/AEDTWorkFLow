@@ -8,6 +8,7 @@ Created on 2020-7-4
 import clr
 import sys
 import re
+import time
 sys.path.append(r'D:\Study\Script\VSRepos\simpleWinAPI\simpleWinAPI2\bin\Debug')
 clr.AddReferenceToFile('simpleWinAPI2.dll')
 from simpleWinAPI import winAPI
@@ -17,10 +18,11 @@ from System.Diagnostics import Process
 
 
 
-class menuCommand(object):
+class Win32Command(object):
     '''
     classdocs
     '''
+    
     
     def __init__(self):
         '''
@@ -90,7 +92,8 @@ class menuCommand(object):
                 self.getMenuIdList(hSubmenu)
                 
     def invokedMenuByID(self,menuID):
-        winAPI.MenuClick(self.hwnd,menuID) 
+        #return winAPI.SendMessage(self.hwnd, winAPI.WM_COMMAND, menuID, None)
+        return winAPI.PostMessage(self.hwnd, winAPI.WM_COMMAND, menuID, None)
         
     def invokedMenuByName(self,name):
         try:
@@ -100,10 +103,21 @@ class menuCommand(object):
             print("not fond menu item: " + name)
     
     def invokedButtom(self,hWnd,ID):
-        winAPI.SendMessage(hWnd,winAPI.WM_COMMAND,ID,None)    
+        winAPI.SendMessage(hWnd,winAPI.WM_COMMAND,ID,None)
+
+    def waitForValid(self,cmd,interval,timeout):
+        timeElapse = 0
+        while timeElapse < timeout:
+            rst = eval(cmd)
+            if rst:
+                return rst
+            time.sleep(interval)
+            timeElapse += interval
+            print(timeElapse)
+
                 
 if __name__ == "__main__":
-    mc = menuCommand()     
+    mc = Win32Command()     
 #     hwnd = winAPI.FindWindow('Notepad',None)
 #     mc.hwnd = hwnd
 #     mc.getMenuIdList()

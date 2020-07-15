@@ -20,14 +20,16 @@ import MainForm
 
 global oDesktop
 try:
-    import ScriptEnv
-    ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-    oDesktop.RestoreWindow()
+    if 'oDesktop' not in dir():
+        import ScriptEnv
+        ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
+        oDesktop.RestoreWindow()
 except ImportError:
     print('Not Run from AEDT')
     oDesktop = None
 else:
     print('Running in AEDT environment')
+    
     
 MainForm.oDesktop = oDesktop
 MainForm.appPath = appPath
